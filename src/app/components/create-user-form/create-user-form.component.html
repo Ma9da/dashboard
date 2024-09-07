@@ -1,0 +1,36 @@
+<div class="container">
+  <h1>Add user:</h1>
+  <form [formGroup]="addUserForm" (ngSubmit)="addUserSubmit(addUserForm)">
+    <label for="email">Email:</label>
+    <input formControlName="email" type="email" id="email" />
+    <!--  -->
+    <label for="name">Name:</label>
+    <input formControlName="name" type="text" id="name" />
+
+    <!--  -->
+    <label for="gender">Gender:</label>
+
+    <label for="female">female</label>
+    <input
+      type="radio"
+      formControlName="gender"
+      name="gender"
+      value="female"
+      id="female"
+    />
+
+    <label for="male">male</label>
+    <input
+      type="radio"
+      formControlName="gender"
+      name="gender"
+      value="male"
+      id="male"
+    />
+    <!--  -->
+    <label for="status">status</label>
+    <input type="text" id="status" />
+    <!--  -->
+    <input type="submit" value="send" />
+  </form>
+</div>

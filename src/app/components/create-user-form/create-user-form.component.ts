@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {
   AbstractControl,
   AsyncValidatorFn,
+  FormBuilder,
   FormControl,
   FormGroup,
   ValidationErrors,
@@ -16,4 +17,16 @@ import { Observable, Observer } from 'rxjs';
 
   styleUrls: ['./create-user-form.component.css'],
 })
-export class CreateUserFormComponent {}
+export class CreateUserFormComponent {
+  addUserForm!: FormGroup;
+  constructor(private fb: FormBuilder) {
+    this.addUserForm = this.fb.group({
+      email: ['', Validators.required],
+      name: ['', Validators.required],
+      gender: [null, Validators.required],
+    });
+  }
+  addUserSubmit(vale: any) {
+    console.log(vale);
+  }
+}
