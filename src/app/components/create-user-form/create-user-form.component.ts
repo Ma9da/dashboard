@@ -4,7 +4,6 @@ import {
   AsyncValidatorFn,
   FormControl,
   FormGroup,
-  NonNullableFormBuilder,
   ValidationErrors,
   ValidatorFn,
   Validators,
@@ -17,27 +16,4 @@ import { Observable, Observer } from 'rxjs';
 
   styleUrls: ['./create-user-form.component.css'],
 })
-export class CreateUserFormComponent {
-  validateForm: FormGroup<{
-    name: FormControl<string>;
-    email: FormControl<string>;
-    gender: FormControl<any>;
-  }>;
-
-  submitForm(): void {
-    console.log('submit', this.validateForm.value);
-  }
-
-  resetForm(e: MouseEvent): void {
-    e.preventDefault();
-    this.validateForm.reset();
-  }
-
-  constructor(private fb: NonNullableFormBuilder) {
-    this.validateForm = this.fb.group({
-      name: ['', [Validators.required]],
-      email: ['', [Validators.email, Validators.required]],
-      gender: ['', [Validators.required]],
-    });
-  }
-}
+export class CreateUserFormComponent {}
