@@ -4,6 +4,7 @@ form {
   width: 300px;
   background-color: #e8e5e5;
   padding: 25px;
+  border: 1px solid;
 }
 input {
   padding: 5px 3px;

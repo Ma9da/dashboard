@@ -13,10 +13,12 @@ interface User {
 })
 export class UserServiceService {
   private baseUrl: string = 'https://gorest.co.in/public/v2/users';
-  private tokenKey: string = '0af95b048e8cbfa4c8b1fd3f744f48e668a3777c55f37604aedbd115cb2727db';
+  private tokenKey: string =
+    '0af95b048e8cbfa4c8b1fd3f744f48e668a3777c55f37604aedbd115cb2727db';
 
   constructor(private http: HttpClient) {}
   createUser(user: User): Observable<any> {
-    return this.http.post<any>(this.baseUrl, user);
+    const headers = { Authorization: `Bearer ${this.tokenKey}` };
+    return this.http.post<any>(this.baseUrl, user, { headers });
   }
 }
