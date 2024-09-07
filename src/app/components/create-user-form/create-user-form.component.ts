@@ -2,72 +2,47 @@ import { Component } from '@angular/core';
 import {
   AbstractControl,
   AsyncValidatorFn,
+  FormBuilder,
   FormControl,
   FormGroup,
-  NonNullableFormBuilder,
   ValidationErrors,
   ValidatorFn,
-  Validators
+  Validators,
 } from '@angular/forms';
 import { Observable, Observer } from 'rxjs';
+import { UserServiceService } from '../../services/userService.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-create-user-form',
   templateUrl: './create-user-form.component.html',
 
-  styleUrls: ['./create-user-form.component.css']
+  styleUrls: ['./create-user-form.component.css'],
 })
 export class CreateUserFormComponent {
-  validateForm: FormGroup<{
-    userName: FormControl<string>;
-    email: FormControl<string>;
-    password: FormControl<string>;
-    confirm: FormControl<string>;
-    comment: FormControl<string>;
-  }>;
-
-  submitForm(): void {
-    console.log('submit', this.validateForm.value);
-  }
-
-  resetForm(e: MouseEvent): void {
-    e.preventDefault();
-    this.validateForm.reset();
-  }
-
-  validateConfirmPassword(): void {
-    setTimeout(() => this.validateForm.controls.confirm.updateValueAndValidity());
-  }
-
-  userNameAsyncValidator: AsyncValidatorFn = (control: AbstractControl) =>
-    new Observable((observer: Observer<ValidationErrors | null>) => {
-      setTimeout(() => {
-        if (control.value === 'JasonWood') {
-          // you have to return `{error: true}` to mark it as an error event
-          observer.next({ error: true, duplicated: true });
-        } else {
-          observer.next(null);
-        }
-        observer.complete();
-      }, 1000);
+  addUserForm!: FormGroup;
+  constructor(
+    private fb: FormBuilder,
+    private userService: UserServiceService
+  ) {
+    this.addUserForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      name: ['', [Validators.required]],
+      gender: [null, [Validators.required]],
+      status: ['', [Validators.required]],
     });
-
-  confirmValidator: ValidatorFn = (control: AbstractControl) => {
-    if (!control.value) {
-      return { error: true, required: true };
-    } else if (control.value !== this.validateForm.controls.password.value) {
-      return { confirm: true, error: true };
+  }
+  addUserSubmit() {
+    if (this.addUserForm.valid) {
+      this.userService.createUser(this.addUserForm.value).subscribe({
+        next: (response: any) => {
+          console.log('User created:', response);
+          this.addUserForm.reset();
+        },
+        error: (err: any) => {
+          console.error('Error creating user:', err);
+        },
+      });
     }
-    return {};
-  };
-
-  constructor(private fb: NonNullableFormBuilder) {
-    this.validateForm = this.fb.group({
-      userName: ['', [Validators.required], [this.userNameAsyncValidator]],
-      email: ['', [Validators.email, Validators.required]],
-      password: ['', [Validators.required]],
-      confirm: ['', [this.confirmValidator]],
-      comment: ['', [Validators.required]]
-    });
   }
 }
