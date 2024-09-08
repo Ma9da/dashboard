@@ -24,7 +24,6 @@ export class UsersListComponent implements OnInit {
     this.userService.getUsersList().subscribe({
       next: (users: User[]) => {
         this.usersList = users;
-        console.log(this.usersList);
       },
       error: (err: any) => {
         this.errorMessage = 'Failed to load users. Please try again later.';
