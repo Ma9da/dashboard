@@ -1,0 +1,14 @@
+<div class="container">
+  <h1>Users List:</h1>
+  <ul class="list">
+    <li
+      *ngFor="let user of usersList"
+      [ngClass]="user.status === 'active' ? 'active' : 'inactive'"
+    >
+      <span>Name: {{ user?.name }} </span>
+      <span>Email: {{ user?.email }}</span>
+      <span> Gender: {{ user?.gender }}</span>
+      <span> Status: {{ user?.status }}</span>
+    </li>
+  </ul>
+</div>
