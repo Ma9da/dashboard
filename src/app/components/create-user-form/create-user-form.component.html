@@ -23,56 +23,66 @@
     </ng-container>
 
     <!--  -->
-    <label for="gender">Gender:</label>
-    <label for="female">Female</label>
-    <input
-      type="radio"
-      formControlName="gender"
-      name="gender"
-      value="female"
-      id="female"
-    />
-    <label for="male">Male</label>
-    <input
-      type="radio"
-      formControlName="gender"
-      name="gender"
-      value="male"
-      id="male"
-    />
-    <ng-container
-      *ngIf="
-        addUserForm.get('gender')?.invalid && addUserForm.get('gender')?.touched
-      "
-    >
-      <small>This field is required!</small>
-    </ng-container>
+    <label>Gender:</label>
+    <div class="radio-wrapper">
+      <label for="female">Female</label>
+      <input
+        type="radio"
+        formControlName="gender"
+        name="gender"
+        value="female"
+        id="female"
+      />
+      <label for="male">Male</label>
+      <input
+        type="radio"
+        formControlName="gender"
+        name="gender"
+        value="male"
+        id="male"
+      />
+      <ng-container
+        *ngIf="
+          addUserForm.get('gender')?.invalid &&
+          addUserForm.get('gender')?.touched
+        "
+      >
+        <small>This field is required!</small>
+      </ng-container>
+    </div>
     <!--  -->
-    <label for="status">status:</label>
-    <label for="active">active</label>
-    <input
-      type="radio"
-      formControlName="status"
-      name="status"
-      value="active"
-      id="active"
-    />
-    <label for="inactive">inactive</label>
-    <input
-      type="radio"
-      formControlName="status"
-      name="status"
-      value="inactive"
-      id="inactive"
-    />
-    <ng-container
-      *ngIf="
-        addUserForm.get('status')?.invalid && addUserForm.get('status')?.touched
-      "
-    >
-      <small>This field is required!</small>
-    </ng-container>
+    <label>status:</label>
+    <div class="radio-wrapper">
+      <label for="active">active</label>
+      <input
+        type="radio"
+        formControlName="status"
+        name="status"
+        value="active"
+        id="active"
+      />
+      <label for="inactive">inactive</label>
+      <input
+        type="radio"
+        formControlName="status"
+        name="status"
+        value="inactive"
+        id="inactive"
+      />
+      <ng-container
+        *ngIf="
+          addUserForm.get('status')?.invalid &&
+          addUserForm.get('status')?.touched
+        "
+      >
+        <small>This field is required!</small>
+      </ng-container>
+    </div>
     <!--  -->
-    <input type="submit" value="Send" />
+    <input
+      type="submit"
+      [disabled]="reqLoading"
+      [value]="!reqLoading ? 'send' : 'loading...'"
+    />
   </form>
 </div>

@@ -21,6 +21,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class CreateUserFormComponent {
   addUserForm!: FormGroup;
+  reqLoading: boolean = false;
   constructor(
     private fb: FormBuilder,
     private userService: UserServiceService
@@ -34,10 +35,12 @@ export class CreateUserFormComponent {
   }
   addUserSubmit() {
     if (this.addUserForm.valid) {
+      this.reqLoading = true;
       this.userService.createUser(this.addUserForm.value).subscribe({
         next: (response: any) => {
           console.log('User created:', response);
           this.addUserForm.reset();
+          this.reqLoading = false;
         },
         error: (err: any) => {
           console.error('Error creating user:', err);
