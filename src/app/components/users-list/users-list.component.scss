@@ -15,6 +15,14 @@ h1 {
     flex-direction: column;
     // background-color: #faeed1;
   }
+  .controls {
+    display: flex;
+    justify-content: flex-end;
+    .btn-add {
+      padding: 5px 10px;
+      border: 1px solid;
+    }
+  }
   .active {
     background-color: rgb(210, 233, 210);
   }

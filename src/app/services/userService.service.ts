@@ -17,7 +17,7 @@ interface User {
   providedIn: 'root',
 })
 export class UserServiceService {
-  private baseUrl: string = 'https://gorest.co.in/public/v2/users/';
+  private baseUrl: string = 'https://gorest.co.in/public/v2/users';
   private tokenKey: string =
     '0af95b048e8cbfa4c8b1fd3f744f48e668a3777c55f37604aedbd115cb2727db';
   private headers = new HttpHeaders({
@@ -30,5 +30,10 @@ export class UserServiceService {
   }
   getUsersList(): Observable<User[]> {
     return this.http.get<User[]>(this.baseUrl, { headers: this.headers });
+  }
+  getUserById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/${id}`, {
+      headers: this.headers,
+    });
   }
 }

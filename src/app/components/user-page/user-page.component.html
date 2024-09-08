@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="card" *ngIf="user; else elseBlock">
+    <div>Name: {{ user?.name }}</div>
+    <div>Email: {{ user?.email }}</div>
+    <div>Gender: {{ user?.gender }}</div>
+    <div>Status: {{ user?.status }}</div>
+  </div>
+  <ng-template #elseBlock>
+    <h1>Loading...</h1>
+  </ng-template>
+</div>

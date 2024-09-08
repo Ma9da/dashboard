@@ -5,10 +5,15 @@
       *ngFor="let user of usersList"
       [ngClass]="user.status === 'active' ? 'active' : 'inactive'"
     >
-      <span>Name: {{ user?.name }} </span>
-      <span>Email: {{ user?.email }}</span>
-      <span> Gender: {{ user?.gender }}</span>
-      <span> Status: {{ user?.status }}</span>
+      <div class="controls">
+        <button class="btn-add" routerLink="/users/{{ user?.id }}">
+          view user
+        </button>
+      </div>
+      <div>Name: {{ user?.name }}</div>
+      <div>Email: {{ user?.email }}</div>
+      <div>Gender: {{ user?.gender }}</div>
+      <div>Status: {{ user?.status }}</div>
     </li>
   </ul>
 </div>
