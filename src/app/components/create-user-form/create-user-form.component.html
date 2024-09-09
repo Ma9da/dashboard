@@ -1,6 +1,6 @@
 <div class="container">
   <h1>Add user:</h1>
-  <form [formGroup]="addUserForm" (ngSubmit)="addUserSubmit()">
+  <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
     <label for="email">Email:</label>
     <input formControlName="email" type="email" id="email" />
     <ng-container *ngIf="addUserForm.get('email')?.touched">
@@ -81,7 +81,7 @@
     <!--  -->
     <input
       type="submit"
-      [disabled]="reqLoading"
+      [disabled]="addUserForm.invalid || reqLoading"
       [value]="!reqLoading ? 'send' : 'loading...'"
     />
   </form>

@@ -2,4 +2,13 @@
   padding: 15px;
   border: 1px solid;
   background-color: #ffffb6;
+  .controls {
+    display: flex;
+    justify-content: flex-end;
+    button {
+      padding: 5px 10px;
+      border: 1px solid;
+      margin: 0 5px;
+    }
+  }
 }

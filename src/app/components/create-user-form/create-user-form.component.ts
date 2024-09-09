@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  SimpleChanges,
+} from '@angular/core';
 import {
   AbstractControl,
   AsyncValidatorFn,
@@ -12,6 +18,13 @@ import {
 import { Observable, Observer } from 'rxjs';
 import { UserServiceService } from '../../services/userService.service';
 import { FormsModule } from '@angular/forms';
+interface User {
+  id?: number;
+  email: string;
+  name: string;
+  gender: string;
+  status: string;
+}
 
 @Component({
   selector: 'app-create-user-form',
@@ -20,6 +33,9 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./create-user-form.component.css'],
 })
 export class CreateUserFormComponent {
+  @Input() user: User = { email: '', name: '', gender: '', status: '' };
+  // @output() userForm =
+  @Output() formSubmit = new EventEmitter<User>();
   addUserForm!: FormGroup;
   reqLoading: boolean = false;
   constructor(
@@ -33,19 +49,18 @@ export class CreateUserFormComponent {
       status: ['', [Validators.required]],
     });
   }
-  addUserSubmit() {
-    if (this.addUserForm.valid) {
-      this.reqLoading = true;
-      this.userService.createUser(this.addUserForm.value).subscribe({
-        next: (response: any) => {
-          console.log('User created:', response);
-          this.addUserForm.reset();
-          this.reqLoading = false;
-        },
-        error: (err: any) => {
-          console.error('Error creating user:', err);
-        },
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['user'] && this.user) {
+      this.addUserForm.patchValue({
+        email: this.user.email,
+        name: this.user.name,
+        gender: this.user.gender,
+        status: this.user.status,
       });
     }
+  }
+  onSubmit() {
+    this.formSubmit.emit(this.addUserForm.value);
+    this.addUserForm.reset();
   }
 }

@@ -1,9 +1,22 @@
 <div class="container">
   <div class="card" *ngIf="user; else elseBlock">
-    <div>Name: {{ user?.name }}</div>
-    <div>Email: {{ user?.email }}</div>
-    <div>Gender: {{ user?.gender }}</div>
-    <div>Status: {{ user?.status }}</div>
+    <div class="controls">
+      <button (click)="editingMode()">
+        {{ isEditing ? "done editing" : "edit" }}
+      </button>
+      <button>remove</button>
+    </div>
+    <div>Name: {{ user.name }}</div>
+    <div>Email: {{ user.email }}</div>
+    <div>Gender: {{ user.gender }}</div>
+    <div>Status: {{ user.status }}</div>
+    <ng-container *ngIf="isEditing">
+      <app-create-user-form (formSubmit)="editUser($event)" [user]="user">
+      </app-create-user-form>
+      <div class="controls">
+        <button (click)="editingMode()">cancel editing</button>
+      </div>
+    </ng-container>
   </div>
   <ng-template #elseBlock>
     <h1>Loading...</h1>
