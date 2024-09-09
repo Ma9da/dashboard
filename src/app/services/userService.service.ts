@@ -36,4 +36,9 @@ export class UserServiceService {
       headers: this.headers,
     });
   }
+  editUser(id: any, newValue: User): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/${id}`, newValue, {
+      headers: this.headers,
+    });
+  }
 }

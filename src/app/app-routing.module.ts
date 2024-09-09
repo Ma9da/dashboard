@@ -5,6 +5,7 @@ import { CreateUserFormComponent } from './components/create-user-form/create-us
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { AppComponent } from './app.component';
 import { UserPageComponent } from './components/user-page/user-page.component';
+import { CreateUserPageComponent } from './components/create-user-page/create-user-page.component';
 
 const routes: Routes = [
   {
@@ -13,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: 'create-user',
-    component: CreateUserFormComponent,
+    component: CreateUserPageComponent,
   },
   {
     path: 'users',

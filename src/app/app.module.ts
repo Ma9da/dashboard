@@ -18,6 +18,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { CreateUserFormComponent } from './components/create-user-form/create-user-form.component';
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { UserPageComponent } from './components/user-page/user-page.component';
+import { CreateUserPageComponent } from './components/create-user-page/create-user-page.component';
 
 registerLocaleData(en);
 
@@ -28,6 +29,7 @@ registerLocaleData(en);
     CreateUserFormComponent,
     UsersListComponent,
     UserPageComponent,
+    CreateUserPageComponent,
   ],
   imports: [
     BrowserModule,
