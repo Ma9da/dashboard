@@ -1,19 +1,22 @@
 form {
   display: flex;
   flex-direction: column;
-  width: 300px;
-  background-color: #e8e5e5;
   padding: 25px;
-  border: 1px solid;
 }
 input {
-  padding: 5px 3px;
   margin-bottom: 5px;
-  border: 1px solid;
+  font-size: 18px;
+  padding: 10px;
 }
 label {
   font-size: 18px;
 }
-input[type="submit"] {
-  background-color: rgb(149, 187, 149);
+legend {
+  font-size: 18px;
+}
+fieldset {
+  margin: 10px 0;
+}
+small {
+  color: red;
 }

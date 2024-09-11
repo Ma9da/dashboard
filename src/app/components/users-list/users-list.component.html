@@ -1,24 +1,42 @@
 <div class="container">
-  <h1>Users List:</h1>
   <ng-container *ngIf="usersList.length; else loading">
-    <ul class="list">
-      <li
-        *ngFor="let user of usersList"
-        [ngClass]="user.status === 'active' ? 'active' : 'inactive'"
-      >
-        <div class="controls">
-          <button class="btn-add" routerLink="/users/{{ user?.id }}">
-            view user
-          </button>
-        </div>
-        <div>Name: {{ user?.name }}</div>
-        <div>Email: {{ user?.email }}</div>
-        <div>Gender: {{ user?.gender }}</div>
-        <div>Status: {{ user?.status }}</div>
-      </li>
-    </ul>
+    <div class="sunken-panel" style="height: 250px; width: 740px">
+      <table class="interactive">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let user of usersList"
+            [ngClass]="user.status === 'active' ? 'active' : 'inactive'"
+          >
+            <td>
+              {{ user.name }}
+            </td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.gender }}</td>
+            <td>{{ user.status }}</td>
+            <td>
+              <div class="title-bar-controls">
+                <button
+                  aria-label="Help"
+                  routerLink="/users/{{ user?.id }}"
+                ></button>
+                <button aria-label="Close"></button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </ng-container>
   <ng-template #loading>
-    <h1>loading...</h1>
+    <img src="https://i.makeagif.com/media/11-03-2016/78S4p_.gif" alt="" />
   </ng-template>
 </div>

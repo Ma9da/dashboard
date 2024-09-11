@@ -1,52 +1,19 @@
-h1 {
-  padding: 15px 0;
+.active {
+  background-color: #00007b;
+  color: #ffffff;
 }
-.list {
-  list-style: none;
-  border: 1px solid;
-  padding: 10px 15px;
-  background-color: #e8e5e5;
-  li {
-    position: relative;
-    padding: 15px;
-    border: 1px solid;
-    margin: 10px;
-    display: flex;
-    flex-direction: column;
-    // background-color: #faeed1;
-  }
-  .controls {
-    display: flex;
-    justify-content: flex-end;
-    .btn-add {
-      padding: 5px 10px;
-      border: 1px solid;
-    }
-  }
-  .active {
-    background-color: rgb(210, 233, 210);
-  }
-  .inactive {
-    background-color: rgb(220, 182, 182);
-  }
-  li::after {
-    content: "";
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    top: -6%;
-    right: -2px;
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
-  }
-  .active::after {
-    background-color: green;
-  }
-
-  .inactive::after {
-    background-color: red;
-  }
+.inactive {
+  background-color: #ffffff;
+}
+th,
+tr,
+td {
+  font-size: 18px;
+}
+:host {
+  background-image: url("https://media.istockphoto.com/id/1204024766/vector/vaporwave-abstract-checkered-background.jpg?s=612x612&w=0&k=20&c=IgMvggfEwqka1PXYKPgqmJ_LvrJiJm7LRr9W04mVQx4=");
+  display: block;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
 }
