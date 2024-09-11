@@ -1,24 +1,45 @@
 <div class="container">
-  <div class="card" *ngIf="user; else elseBlock">
-    <div class="controls">
-      <button (click)="editingMode()">
-        {{ isEditing ? "done editing" : "edit" }}
-      </button>
-      <button>remove</button>
-    </div>
-    <div>Name: {{ user.name }}</div>
-    <div>Email: {{ user.email }}</div>
-    <div>Gender: {{ user.gender }}</div>
-    <div>Status: {{ user.status }}</div>
-    <ng-container *ngIf="isEditing">
-      <app-create-user-form (formSubmit)="editUser($event)" [user]="user">
-      </app-create-user-form>
-      <div class="controls">
-        <button (click)="editingMode()">cancel editing</button>
+  <ng-container *ngIf="isLoading">
+    <img src="https://i.makeagif.com/media/11-03-2016/78S4p_.gif" alt="" />
+  </ng-container>
+  <ng-container *ngIf="!isLoading && user.name">
+    <div class="window" style="width: 300px">
+      <div class="title-bar">
+        <div class="title-bar-text">user details</div>
+        <div class="title-bar-controls">
+          <button aria-label="Close" (click)="deleteUser(user)"></button>
+        </div>
       </div>
-    </ng-container>
-  </div>
-  <ng-template #elseBlock>
-    <h1>Loading...</h1>
-  </ng-template>
+      <div class="window-body">
+        <ul>
+          <li>Name: {{ user.name }}</li>
+          <li>Email: {{ user.email }}</li>
+          <li>Gender: {{ user.gender }}</li>
+          <li>Status: {{ user.status }}</li>
+        </ul>
+        <button (click)="editingMode()">
+          {{ isEditing ? "done editing" : "edit" }}
+        </button>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="isDeleted">
+    <div class="window" style="width: 300px">
+      <div class="title-bar">
+        <div class="title-bar-text">Not Found</div>
+      </div>
+      <div class="window-body" style="text-align: center">
+        <p>user is either deleted or not found!</p>
+        <img
+          src="https://64.media.tumblr.com/145ba88ac8fe8889043d8a929607a58e/9bd9b9bbc752d2be-8c/s540x810/b48368228fd7effc48dac782474ae5b683b64db6.png"
+          alt=""
+          style="width: 40%"
+        />
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="isEditing">
+    <app-create-user-form (formSubmit)="editUser($event)" [user]="user">
+    </app-create-user-form>
+  </ng-container>
 </div>

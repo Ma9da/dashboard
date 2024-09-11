@@ -1,88 +1,105 @@
 <div class="container">
-  <h1>Add user:</h1>
-  <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
-    <label for="email">Email:</label>
-    <input formControlName="email" type="email" id="email" />
-    <ng-container *ngIf="addUserForm.get('email')?.touched">
-      <small *ngIf="addUserForm.get('email')?.hasError('email')">
-        Please provide a valid email format!
-      </small>
-      <small *ngIf="addUserForm.get('email')?.hasError('required')">
-        This field is required!
-      </small>
-    </ng-container>
-    <!--  -->
-    <label for="name">Name:</label>
-    <input formControlName="name" type="text" id="name" />
-    <ng-container
-      *ngIf="
-        addUserForm.get('name')?.invalid && addUserForm.get('name')?.touched
-      "
-    >
-      <small>This field is required!</small>
-    </ng-container>
+  <div class="window" style="width: 320px">
+    <div class="title-bar">
+      <div class="title-bar-text">
+        {{ isEditMode ? "Edit User Form" : "Create User Form" }}
+      </div>
+    </div>
+    <div class="window-body">
+      <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
+        <div class="field-row-stacked" style="width: 100%">
+          <label for="email">Email:</label>
+          <input formControlName="email" type="email" id="email" />
+          <ng-container *ngIf="addUserForm.get('email')?.touched">
+            <small *ngIf="addUserForm.get('email')?.hasError('email')">
+              Please provide a valid email format!
+            </small>
+            <small *ngIf="addUserForm.get('email')?.hasError('required')">
+              This field is required!
+            </small>
+          </ng-container>
+          <label for="name">Name:</label>
+          <input formControlName="name" type="text" id="name" />
+          <ng-container
+            *ngIf="
+              addUserForm.get('name')?.invalid &&
+              addUserForm.get('name')?.touched
+            "
+          >
+            <small>This field is required!</small>
+          </ng-container>
+        </div>
+        <fieldset>
+          <legend>Gender</legend>
+          <div class="field-row">
+            <input
+              id="male"
+              type="radio"
+              value="male"
+              name="gender"
+              formControlName="gender"
+            />
+            <label for="male">Male</label>
+          </div>
+          <div class="field-row">
+            <input
+              id="female"
+              type="radio"
+              value="female"
+              name="gender"
+              formControlName="gender"
+            />
+            <label for="female">Female</label>
+          </div>
+          <ng-container
+            *ngIf="
+              addUserForm.get('gender')?.invalid &&
+              addUserForm.get('gender')?.touched
+            "
+          >
+            <small>This field is required!</small>
+          </ng-container>
+        </fieldset>
+        <!--  -->
+        <fieldset>
+          <legend>status</legend>
+          <div class="field-row">
+            <input
+              id="active"
+              type="radio"
+              formControlName="status"
+              name="status"
+              value="active"
+            />
+            <label for="active">Active</label>
+          </div>
+          <div class="field-row">
+            <input
+              id="inactive"
+              type="radio"
+              formControlName="status"
+              name="status"
+              value="inactive"
+            />
+            <label for="inactive">Inactive</label>
+          </div>
+          <ng-container
+            *ngIf="
+              addUserForm.get('status')?.invalid &&
+              addUserForm.get('status')?.touched
+            "
+          >
+            <small>This field is required!</small>
+          </ng-container>
+        </fieldset>
 
-    <!--  -->
-    <label>Gender:</label>
-    <div class="radio-wrapper">
-      <label for="female">Female</label>
-      <input
-        type="radio"
-        formControlName="gender"
-        name="gender"
-        value="female"
-        id="female"
-      />
-      <label for="male">Male</label>
-      <input
-        type="radio"
-        formControlName="gender"
-        name="gender"
-        value="male"
-        id="male"
-      />
-      <ng-container
-        *ngIf="
-          addUserForm.get('gender')?.invalid &&
-          addUserForm.get('gender')?.touched
-        "
-      >
-        <small>This field is required!</small>
-      </ng-container>
+        <!--  -->
+        <input
+          type="submit"
+          [disabled]="addUserForm.invalid || reqLoading"
+          [value]="!reqLoading ? 'send' : 'loading...'"
+        />
+      </form>
     </div>
-    <!--  -->
-    <label>status:</label>
-    <div class="radio-wrapper">
-      <label for="active">active</label>
-      <input
-        type="radio"
-        formControlName="status"
-        name="status"
-        value="active"
-        id="active"
-      />
-      <label for="inactive">inactive</label>
-      <input
-        type="radio"
-        formControlName="status"
-        name="status"
-        value="inactive"
-        id="inactive"
-      />
-      <ng-container
-        *ngIf="
-          addUserForm.get('status')?.invalid &&
-          addUserForm.get('status')?.touched
-        "
-      >
-        <small>This field is required!</small>
-      </ng-container>
-    </div>
-    <!--  -->
-    <input
-      type="submit"
-      [disabled]="addUserForm.invalid || reqLoading"
-      [value]="!reqLoading ? 'send' : 'loading...'"
-    />
-  </form>
+  </div>
 </div>
