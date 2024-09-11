@@ -28,7 +28,7 @@
                   aria-label="Help"
                   routerLink="/users/{{ user?.id }}"
                 ></button>
-                <button aria-label="Close"></button>
+                <button aria-label="Close" (click)="deleteUder(user)"></button>
               </div>
             </td>
           </tr>
