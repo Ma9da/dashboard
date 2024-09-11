@@ -41,4 +41,7 @@ export class UserServiceService {
       headers: this.headers,
     });
   }
+  deleteUser(id: number) {
+    return this.http.delete(`${this.baseUrl}/${id}`, { headers: this.headers });
+  }
 }

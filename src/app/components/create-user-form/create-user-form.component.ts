@@ -34,10 +34,10 @@ interface User {
 })
 export class CreateUserFormComponent {
   @Input() user: User = { email: '', name: '', gender: '', status: '' };
-  // @output() userForm =
   @Output() formSubmit = new EventEmitter<User>();
   addUserForm!: FormGroup;
   reqLoading: boolean = false;
+  isEditMode: boolean = false;
   constructor(
     private fb: FormBuilder,
     private userService: UserServiceService

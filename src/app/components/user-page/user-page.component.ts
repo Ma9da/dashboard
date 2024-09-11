@@ -17,6 +17,8 @@ interface User {
 export class UserPageComponent {
   user: User = { email: '', name: '', gender: '', status: '' };
   isEditing: boolean = false;
+  isLoading: boolean = true;
+  isDeleted: boolean = false;
   constructor(
     private userService: UserServiceService,
     private route: ActivatedRoute,
@@ -25,9 +27,20 @@ export class UserPageComponent {
   ngOnInit() {
     const userId: any = this.route.snapshot.paramMap.get('id');
     if (userId) {
-      this.userService
-        .getUserById(userId)
-        .subscribe((user) => (this.user = user));
+      this.userService.getUserById(userId).subscribe({
+        next: (user) => {
+          this.user = user;
+          this.isLoading = true;
+        },
+        error: (err) => {
+          console.error(err);
+        },
+        complete: () => {
+          this.isLoading = false;
+        },
+      });
+    } else {
+      this.isLoading = false;
     }
   }
   editUser(user: User) {
@@ -36,10 +49,31 @@ export class UserPageComponent {
       next: (response) => {
         this.user = response;
       },
-      error: (err) => console.error(err),
+      error: (err) => {
+        console.error(err);
+      },
+      complete: () => {
+        this.isEditing = false;
+      },
     });
   }
   editingMode() {
     this.isEditing = !this.isEditing;
+  }
+  deleteUser(user: User) {
+    if (user.id) {
+      this.userService.deleteUser(user.id).subscribe({
+        next: () => {
+          console.log('deleted successfully');
+          this.user = { email: '', name: '', gender: '', status: '' };
+        },
+        error: (err) => {
+          console.error(err);
+        },
+        complete: () => {
+          this.isDeleted = true;
+        },
+      });
+    }
   }
 }
