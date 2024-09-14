@@ -17,7 +17,8 @@ interface User {
 export class UsersListComponent implements OnInit {
   usersList: User[] = [];
   errorMessage: string = '';
-
+  searchTerm: string = '';
+  statusFilter: string = '';
   constructor(private userService: UserServiceService) {}
 
   ngOnInit(): void {

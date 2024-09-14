@@ -19,6 +19,8 @@ import { CreateUserFormComponent } from './components/create-user-form/create-us
 import { UsersListComponent } from './components/users-list/users-list.component';
 import { UserPageComponent } from './components/user-page/user-page.component';
 import { CreateUserPageComponent } from './components/create-user-page/create-user-page.component';
+import { UserSearchFilterPipe } from './pipes/user-search-filter.pipe';
+import { UserSearchBarComponent } from './components/user-search-bar/user-search-bar.component';
 
 registerLocaleData(en);
 
@@ -30,6 +32,8 @@ registerLocaleData(en);
     UsersListComponent,
     UserPageComponent,
     CreateUserPageComponent,
+    UserSearchFilterPipe,
+    UserSearchBarComponent,
   ],
   imports: [
     BrowserModule,
