@@ -1,0 +1,9 @@
+<div class="field-row-stacked" style="width: 300px">
+  <label for="text18">Search for a user:</label>
+  <input
+    id="text18"
+    type="text"
+    [(ngModel)]="searchTerm"
+    (ngModelChange)="onSearchTermChange($event)"
+  />
+</div>

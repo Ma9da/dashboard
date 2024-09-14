@@ -17,3 +17,9 @@ td {
   background-position: center;
   height: 100vh;
 }
+.container {
+  flex-direction: column;
+  .search-form {
+    padding: 15px 0;
+  }
+}
