@@ -7,11 +7,16 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class UserSearchBarComponent {
   @Input() searchTerm: string = '';
-  @Output() searchTermChange: EventEmitter<any> = new EventEmitter<any>();
+  @Input() statusFilter: string = '';
+  @Output() searchTermChange: EventEmitter<string> = new EventEmitter<string>();
+  @Output() statusFilterChange: EventEmitter<string> =
+    new EventEmitter<string>();
   onSearchTermChange(term: string) {
     this.searchTerm = term;
     this.searchTermChange.emit(this.searchTerm);
   }
-
-  ngOnChange() {}
+  onStatusFilterChange(status: string) {
+    this.statusFilter = status;
+    this.statusFilterChange.emit(this.statusFilter);
+  }
 }

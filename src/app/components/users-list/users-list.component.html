@@ -1,6 +1,9 @@
 <div class="container">
   <div class="search-form">
-    <app-user-search-bar [(searchTerm)]="searchTerm"></app-user-search-bar>
+    <app-user-search-bar
+      [(statusFilter)]="statusFilter"
+      [(searchTerm)]="searchTerm"
+    ></app-user-search-bar>
   </div>
   <ng-container *ngIf="usersList.length; else loading">
     <div class="sunken-panel" style="height: 250px; width: 740px">
@@ -16,7 +19,10 @@
         </thead>
         <tbody>
           <tr
-            *ngFor="let user of usersList | userSearchFilter : searchTerm"
+            *ngFor="
+              let user of usersList
+                | userSearchFilter : searchTerm : statusFilter
+            "
             [ngClass]="user.status === 'active' ? 'active' : 'inactive'"
           >
             <td>{{ user.name }}</td>

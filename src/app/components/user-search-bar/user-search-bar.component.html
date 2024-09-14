@@ -1,4 +1,5 @@
 <div class="field-row-stacked" style="width: 300px">
+  <!-- Search for a user input -->
   <label for="text18">Search for a user:</label>
   <input
     id="text18"
@@ -6,4 +7,37 @@
     [(ngModel)]="searchTerm"
     (ngModelChange)="onSearchTermChange($event)"
   />
+
+  <!-- Radio buttons for filtering active/inactive/all users -->
+  <div>
+    <input
+      id="all"
+      type="radio"
+      name="status"
+      [(ngModel)]="statusFilter"
+      value="all"
+      (ngModelChange)="onStatusFilterChange($event)"
+    />
+    <label for="all">All</label>
+
+    <input
+      id="active"
+      type="radio"
+      name="status"
+      [(ngModel)]="statusFilter"
+      value="active"
+      (ngModelChange)="onStatusFilterChange($event)"
+    />
+    <label for="active">Active</label>
+
+    <input
+      id="inactive"
+      type="radio"
+      name="status"
+      [(ngModel)]="statusFilter"
+      value="inactive"
+      (ngModelChange)="onStatusFilterChange($event)"
+    />
+    <label for="inactive">Inactive</label>
+  </div>
 </div>
