@@ -29,6 +29,7 @@ body {
   background-color: $teal;
   font-family: $font-family;
 }
+
 .container {
   width: 100%;
   min-height: 80vh;
@@ -58,4 +59,12 @@ body {
   display: flex;
   justify-content: space-evenly;
   margin: 5px 0;
+}
+.sunken-panel {
+  width: 650px;
+}
+@media only screen and (max-width: 600px) {
+  .sunken-panel {
+    width: 270px;
+  }
 }
