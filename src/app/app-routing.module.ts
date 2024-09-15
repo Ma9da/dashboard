@@ -15,14 +15,17 @@ const routes: Routes = [
   {
     path: 'create-user',
     component: CreateUserPageComponent,
+    title: 'Create a user',
   },
   {
     path: 'users',
     component: UsersListComponent,
+    title: 'display all Users',
   },
   {
     path: 'users/:id',
     component: UserPageComponent,
+    title: 'user',
   },
 ];
 
