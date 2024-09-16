@@ -1,3 +1,6 @@
 label {
   font-size: 18px;
 }
+input[type="radio"] + label {
+  margin-right: 18px;
+}

@@ -21,6 +21,8 @@ import { UserPageComponent } from './components/user-page/user-page.component';
 import { CreateUserPageComponent } from './components/create-user-page/create-user-page.component';
 import { UserSearchFilterPipe } from './pipes/user-search-filter.pipe';
 import { UserSearchBarComponent } from './components/user-search-bar/user-search-bar.component';
+import { HomeComponent } from './components/home/home.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 registerLocaleData(en);
 
@@ -34,6 +36,8 @@ registerLocaleData(en);
     CreateUserPageComponent,
     UserSearchFilterPipe,
     UserSearchBarComponent,
+    HomeComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

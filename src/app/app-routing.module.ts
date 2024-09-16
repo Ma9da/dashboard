@@ -6,8 +6,15 @@ import { UsersListComponent } from './components/users-list/users-list.component
 import { AppComponent } from './app.component';
 import { UserPageComponent } from './components/user-page/user-page.component';
 import { CreateUserPageComponent } from './components/create-user-page/create-user-page.component';
+import { HomeComponent } from './components/home/home.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
+  {
+    path: '',
+    component: HomeComponent,
+    title: 'Home',
+  },
   {
     path: 'navbar',
     component: NavbarComponent,
@@ -26,6 +33,10 @@ const routes: Routes = [
     path: 'users/:id',
     component: UserPageComponent,
     title: 'user',
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
   },
 ];
 
