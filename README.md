@@ -1,4 +1,8 @@
 # Dashboard
+![image](https://github.com/user-attachments/assets/cc19e49d-e56c-4fe3-80df-3f2b5c9fba18)
+![image](https://github.com/user-attachments/assets/c4f120b8-6783-497e-b3f7-003574408f56)
+![image](https://github.com/user-attachments/assets/16f33b4a-4e0f-4a60-b562-38c61de0a425)
+![image](https://github.com/user-attachments/assets/8bdbb780-197b-43f4-a393-8507b039d0c3)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.4.
 
