@@ -27,7 +27,7 @@
             "customWebpackConfig": {
               "path": "./webpack.config.js"
             },
-            "outputPath": "dist/dashboard",
+            "outputPath": "dist/dashboard/",
             "baseHref": "/dashboard/",
             "index": "src/index.html",
             "main": "src/main.ts",
