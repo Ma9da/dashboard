@@ -38,7 +38,7 @@
                 <button
                   aria-label="Close"
                   (click)="deleteUder(user)"
-                  [ngClass]="isLoading ? 'disabled' : ''"
+                  [disabled]="isLoading"
                 ></button>
               </div>
             </td>

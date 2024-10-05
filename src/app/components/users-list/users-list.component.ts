@@ -28,19 +28,19 @@ export class UsersListComponent implements OnInit {
   }
   deleteUder(user: Iuser) {
     if (user.id) {
+      this.isLoading = true;
       this.userService.deleteUser(user.id).subscribe({
         next: () => {
-          console.log('deleted successfuly');
+          this.isLoading = true;
           this.usersList = this.usersList.filter(
             (u: Iuser) => u.id !== user.id
           );
-          this.isLoading = true;
         },
         error: (err) => {
           console.error(err);
         },
         complete: () => {
-          console.log('process done');
+          console.log(this.isLoading);
           this.usersList = this.usersList.filter(
             (u: Iuser) => u.id !== user.id
           );
