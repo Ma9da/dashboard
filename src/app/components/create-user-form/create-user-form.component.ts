@@ -18,13 +18,7 @@ import {
 import { Observable, Observer } from 'rxjs';
 import { UserServiceService } from '../../services/userService.service';
 import { FormsModule } from '@angular/forms';
-interface User {
-  id?: number;
-  email: string;
-  name: string;
-  gender: string;
-  status: string;
-}
+import { Iuser } from '../../models/iuser';
 
 @Component({
   selector: 'app-create-user-form',
@@ -33,8 +27,8 @@ interface User {
   styleUrls: ['./create-user-form.component.css'],
 })
 export class CreateUserFormComponent {
-  @Input() user: User = { email: '', name: '', gender: '', status: '' };
-  @Output() formSubmit = new EventEmitter<User>();
+  @Input() user: Iuser = { email: '', name: '', gender: '', status: '' };
+  @Output() formSubmit = new EventEmitter<Iuser>();
   addUserForm!: FormGroup;
   reqLoading: boolean = false;
   isEditMode: boolean = false;

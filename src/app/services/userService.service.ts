@@ -5,14 +5,8 @@ import {
   provideHttpClient,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Iuser } from '../models/iuser';
 
-interface User {
-  id?: number;
-  email: string;
-  name: string;
-  gender: string;
-  status: string;
-}
 @Injectable({
   providedIn: 'root',
 })
@@ -25,19 +19,19 @@ export class UserServiceService {
   });
 
   constructor(private http: HttpClient) {}
-  createUser(user: User): Observable<any> {
+  createUser(user: Iuser): Observable<Iuser> {
     return this.http.post<any>(this.baseUrl, user, { headers: this.headers });
   }
-  getUsersList(): Observable<User[]> {
-    return this.http.get<User[]>(this.baseUrl, { headers: this.headers });
+  getUsersList(): Observable<Array<Iuser>> {
+    return this.http.get<Array<Iuser>>(this.baseUrl, { headers: this.headers });
   }
-  getUserById(id: number): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/${id}`, {
+  getUserById(id: number): Observable<Iuser> {
+    return this.http.get<Iuser>(`${this.baseUrl}/${id}`, {
       headers: this.headers,
     });
   }
-  editUser(id: any, newValue: User): Observable<any> {
-    return this.http.put<any>(`${this.baseUrl}/${id}`, newValue, {
+  editUser(id: number | undefined, newValue: Iuser): Observable<Iuser> {
+    return this.http.put<Iuser>(`${this.baseUrl}/${id}`, newValue, {
       headers: this.headers,
     });
   }

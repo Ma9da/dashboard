@@ -8,16 +8,6 @@
     <div class="window-body">
       <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()">
         <div class="field-row-stacked" style="width: 100%">
-          <label for="email">Email:</label>
-          <input formControlName="email" type="email" id="email" />
-          <ng-container *ngIf="addUserForm.get('email')?.touched">
-            <small *ngIf="addUserForm.get('email')?.hasError('email')">
-              Please provide a valid email format!
-            </small>
-            <small *ngIf="addUserForm.get('email')?.hasError('required')">
-              This field is required!
-            </small>
-          </ng-container>
           <label for="name">Name:</label>
           <input formControlName="name" type="text" id="name" />
           <ng-container
@@ -27,6 +17,16 @@
             "
           >
             <small>This field is required!</small>
+          </ng-container>
+          <label for="email">Email:</label>
+          <input formControlName="email" type="email" id="email" />
+          <ng-container *ngIf="addUserForm.get('email')?.touched">
+            <small *ngIf="addUserForm.get('email')?.hasError('email')">
+              Please provide a valid email format!
+            </small>
+            <small *ngIf="addUserForm.get('email')?.hasError('required')">
+              This field is required!
+            </small>
           </ng-container>
         </div>
         <fieldset>

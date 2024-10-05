@@ -2,20 +2,15 @@ import { Component } from '@angular/core';
 import { UserServiceService } from '../../services/userService.service';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
-interface User {
-  id?: number;
-  email: string;
-  name: string;
-  gender: string;
-  status: string;
-}
+import { Iuser } from '../../models/iuser';
+
 @Component({
   selector: 'app-user-page',
   templateUrl: './user-page.component.html',
   styleUrl: './user-page.component.scss',
 })
 export class UserPageComponent {
-  user: User = { email: '', name: '', gender: '', status: '' };
+  user: Iuser = { email: '', name: '', gender: '', status: '' };
   isEditing: boolean = false;
   isLoading: boolean = true;
   isDeleted: boolean = false;
@@ -43,7 +38,7 @@ export class UserPageComponent {
       this.isLoading = false;
     }
   }
-  editUser(user: User) {
+  editUser(user: Iuser) {
     this.isEditing = true;
     this.userService.editUser(this.user.id, user).subscribe({
       next: (response) => {
@@ -60,7 +55,7 @@ export class UserPageComponent {
   editingMode() {
     this.isEditing = !this.isEditing;
   }
-  deleteUser(user: User) {
+  deleteUser(user: Iuser) {
     if (user.id) {
       this.userService.deleteUser(user.id).subscribe({
         next: () => {

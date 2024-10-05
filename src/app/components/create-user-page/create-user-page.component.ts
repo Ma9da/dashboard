@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { UserServiceService } from '../../services/userService.service';
-interface User {
-  id?: number;
-  email: string;
-  name: string;
-  gender: string;
-  status: string;
-}
+import { Iuser } from '../../models/iuser';
+
 @Component({
   selector: 'app-create-user-page',
   templateUrl: './create-user-page.component.html',
@@ -15,8 +10,8 @@ interface User {
 export class CreateUserPageComponent {
   constructor(private userService: UserServiceService) {}
   reqLoading: boolean = false;
-  user: User = { email: '', name: '', gender: '', status: '' };
-  handleSubmit(user: User) {
+  user: Iuser = { email: '', name: '', gender: '', status: '' };
+  handleSubmit(user: Iuser) {
     this.reqLoading = true;
     this.userService.createUser(user).subscribe({
       next: (response) => {

@@ -1,13 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserServiceService } from '../../services/userService.service';
-
-interface User {
-  id?: number;
-  email: string;
-  name: string;
-  gender: string;
-  status: string;
-}
+import { Iuser } from '../../models/iuser';
 
 @Component({
   selector: 'app-users-list',
@@ -15,15 +8,16 @@ interface User {
   styleUrls: ['./users-list.component.scss'],
 })
 export class UsersListComponent implements OnInit {
-  usersList: User[] = [];
+  usersList: Array<Iuser> = [];
   errorMessage: string = '';
   searchTerm: string = '';
   statusFilter: string = '';
+  isLoading: boolean = false;
   constructor(private userService: UserServiceService) {}
 
   ngOnInit(): void {
     this.userService.getUsersList().subscribe({
-      next: (users: User[]) => {
+      next: (users: Array<Iuser>) => {
         this.usersList = users;
       },
       error: (err: any) => {
@@ -32,19 +26,25 @@ export class UsersListComponent implements OnInit {
       },
     });
   }
-  deleteUder(user: User) {
+  deleteUder(user: Iuser) {
     if (user.id) {
       this.userService.deleteUser(user.id).subscribe({
         next: () => {
           console.log('deleted successfuly');
-          this.usersList = this.usersList.filter((u) => u.id !== user.id);
+          this.usersList = this.usersList.filter(
+            (u: Iuser) => u.id !== user.id
+          );
+          this.isLoading = true;
         },
         error: (err) => {
           console.error(err);
         },
         complete: () => {
           console.log('process done');
-          this.usersList = this.usersList.filter((u) => u.id !== user.id);
+          this.usersList = this.usersList.filter(
+            (u: Iuser) => u.id !== user.id
+          );
+          this.isLoading = false;
         },
       });
     }

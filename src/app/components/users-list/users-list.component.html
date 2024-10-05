@@ -35,7 +35,11 @@
                   aria-label="Help"
                   routerLink="/users/{{ user?.id }}"
                 ></button>
-                <button aria-label="Close" (click)="deleteUder(user)"></button>
+                <button
+                  aria-label="Close"
+                  (click)="deleteUder(user)"
+                  [ngClass]="isLoading ? 'disabled' : ''"
+                ></button>
               </div>
             </td>
           </tr>
