@@ -1,6 +1,9 @@
 <div class="container">
   <ng-container *ngIf="isLoading">
-    <img src="https://i.makeagif.com/media/11-03-2016/78S4p_.gif" alt="" />
+    <img
+      src="https://i.makeagif.com/media/11-03-2016/78S4p_.gif"
+      alt="loading image"
+    />
   </ng-container>
   <ng-container *ngIf="!isLoading && user.name">
     <div class="window" style="width: 300px">
@@ -38,8 +41,10 @@
       </div>
     </div>
   </ng-container>
-  <ng-container *ngIf="isEditing">
+</div>
+<ng-container *ngIf="isEditing">
+  <div class="editing-form-wrapper">
     <app-create-user-form (formSubmit)="editUser($event)" [user]="user">
     </app-create-user-form>
-  </ng-container>
-</div>
+  </div>
+</ng-container>

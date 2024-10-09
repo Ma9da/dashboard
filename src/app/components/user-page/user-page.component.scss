@@ -1,5 +1,15 @@
+:host {
+  background-image: url("https://wallpapers.com/images/featured/vaporwave-background-sc46wjgt93poi8dk.jpg");
+  display: block;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+}
 .container {
   flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+  height: 100vh;
 }
 button,
 ul,
@@ -14,10 +24,13 @@ ul {
 li {
   margin: 2px 0;
 }
-:host {
-  background-image: url("https://wallpapers.com/images/featured/vaporwave-background-sc46wjgt93poi8dk.jpg");
-  display: block;
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
+.editing-form-wrapper {
+  position: absolute;
+  bottom: 0;
+  right: 14rem;
+}
+@media only screen and (max-width: 768px) {
+  .editing-form-wrapper {
+    right: 0;
+  }
 }

@@ -1,14 +1,15 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { Iuser } from '../models/iuser';
 
 @Pipe({
   name: 'userSearchFilter',
 })
 export class UserSearchFilterPipe implements PipeTransform {
-  transform(users: Array<any>, searchTerm: string, statusFilter: string): any {
-    if (!users) {
-      return [];
-    }
-
+  transform(
+    users: Array<Iuser>,
+    searchTerm: string,
+    statusFilter: string
+  ): Array<Iuser> {
     // Apply the status filter if it exists
     if (statusFilter === 'active') {
       users = users.filter((user) => user.status === 'active');
