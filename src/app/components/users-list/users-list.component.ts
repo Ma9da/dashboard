@@ -40,7 +40,6 @@ export class UsersListComponent implements OnInit {
           console.error(err);
         },
         complete: () => {
-          console.log(this.isLoading);
           this.usersList = this.usersList.filter(
             (u: Iuser) => u.id !== user.id
           );
