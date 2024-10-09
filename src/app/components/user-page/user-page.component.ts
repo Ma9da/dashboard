@@ -16,8 +16,7 @@ export class UserPageComponent {
   isDeleted: boolean = false;
   constructor(
     private userService: UserServiceService,
-    private route: ActivatedRoute,
-    private fb: FormBuilder
+    private route: ActivatedRoute
   ) {}
   ngOnInit() {
     const userId: any = this.route.snapshot.paramMap.get('id');
